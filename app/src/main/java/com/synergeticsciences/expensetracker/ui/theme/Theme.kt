@@ -16,29 +16,35 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Teal80,
-    secondary = TealGrey80,
-    tertiary = Coral80,
-    background = DarkGray,
-    surface = DarkGray,
+    primary = Primary80,
+    secondary = Secondary80,
+    tertiary = Tertiary80,
+    background = BackgroundDark,
+    surface = SurfaceDark,
     onPrimary = androidx.compose.ui.graphics.Color.White,
     onSecondary = androidx.compose.ui.graphics.Color.White,
     onTertiary = androidx.compose.ui.graphics.Color.White,
     onBackground = androidx.compose.ui.graphics.Color.White,
     onSurface = androidx.compose.ui.graphics.Color.White,
+    primaryContainer = PrimaryVariant80,
+    secondaryContainer = Secondary80,
+    tertiaryContainer = Tertiary80,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Teal40,
-    secondary = TealGrey40,
-    tertiary = Coral40,
-    background = androidx.compose.ui.graphics.Color.White,
-    surface = androidx.compose.ui.graphics.Color.White,
+    primary = Primary40,
+    secondary = Secondary40,
+    tertiary = Tertiary40,
+    background = BackgroundLight,
+    surface = SurfaceLight,
     onPrimary = androidx.compose.ui.graphics.Color.White,
     onSecondary = androidx.compose.ui.graphics.Color.White,
     onTertiary = androidx.compose.ui.graphics.Color.White,
-    onBackground = DarkGray,
-    onSurface = DarkGray,
+    onBackground = TextPrimary,
+    onSurface = TextPrimary,
+    primaryContainer = PrimaryVariant40,
+    secondaryContainer = Secondary40,
+    tertiaryContainer = Tertiary40,
 )
 
 @Composable

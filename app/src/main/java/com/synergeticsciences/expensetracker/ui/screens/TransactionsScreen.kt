@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.synergeticsciences.expensetracker.data.model.Transaction
 import com.synergeticsciences.expensetracker.data.model.TransactionType
+import com.synergeticsciences.expensetracker.ui.theme.*
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -303,10 +304,23 @@ fun TransactionCard(
                 modifier = Modifier.weight(1f)
             ) {
                 // Category Icon
+                val categoryColor = when (transaction.category) {
+                    "Food" -> FoodColor
+                    "Travel" -> TravelColor
+                    "Shopping" -> ShoppingColor
+                    "Rent" -> RentColor
+                    "Entertainment" -> EntertainmentColor
+                    "Healthcare" -> HealthcareColor
+                    "Transportation" -> TransportationColor
+                    "Education" -> EducationColor
+                    "Utilities" -> UtilitiesColor
+                    else -> OtherColor
+                }
+                
                 Card(
                     modifier = Modifier.size(40.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                        containerColor = categoryColor.copy(alpha = 0.2f)
                     )
                 ) {
                     Box(
@@ -316,7 +330,7 @@ fun TransactionCard(
                         Icon(
                             imageVector = Icons.Default.Category,
                             contentDescription = transaction.category,
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                            tint = categoryColor,
                             modifier = Modifier.size(20.dp)
                         )
                     }
@@ -352,7 +366,7 @@ fun TransactionCard(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = if (transaction.type == TransactionType.EXPENSE) 
-                        Color(0xFFF44336) else Color(0xFF4CAF50)
+                        ErrorRed else SuccessGreen
                 )
                 Text(
                     text = transaction.type.name,

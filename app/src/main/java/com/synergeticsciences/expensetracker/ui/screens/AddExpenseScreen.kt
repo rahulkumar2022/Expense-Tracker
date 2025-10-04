@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.synergeticsciences.expensetracker.data.model.TransactionType
+import com.synergeticsciences.expensetracker.ui.theme.*
 import java.text.NumberFormat
 import java.util.*
 
@@ -189,8 +190,36 @@ fun AddExpenseScreen(
                             onDismissRequest = { expanded = false }
                         ) {
                             categories.forEach { category ->
+                                val categoryColor = when (category) {
+                                    "Food" -> FoodColor
+                                    "Travel" -> TravelColor
+                                    "Shopping" -> ShoppingColor
+                                    "Rent" -> RentColor
+                                    "Entertainment" -> EntertainmentColor
+                                    "Healthcare" -> HealthcareColor
+                                    "Transportation" -> TransportationColor
+                                    "Education" -> EducationColor
+                                    "Utilities" -> UtilitiesColor
+                                    else -> OtherColor
+                                }
+                                
                                 DropdownMenuItem(
-                                    text = { Text(category) },
+                                    text = { 
+                                        Row(
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Box(
+                                                modifier = Modifier
+                                                    .size(12.dp)
+                                                    .background(
+                                                        categoryColor,
+                                                        shape = androidx.compose.foundation.shape.CircleShape
+                                                    )
+                                            )
+                                            Spacer(modifier = Modifier.width(8.dp))
+                                            Text(category)
+                                        }
+                                    },
                                     onClick = {
                                         selectedCategory = category
                                         expanded = false

@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.synergeticsciences.expensetracker.ui.theme.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -91,7 +92,7 @@ fun HomeScreen(
                         title = "Total Spent",
                         amount = totalSpent,
                         icon = Icons.Default.TrendingDown,
-                        color = Color(0xFFF44336),
+                        color = ErrorRed,
                         modifier = Modifier.weight(1f)
                     )
                     
@@ -99,7 +100,7 @@ fun HomeScreen(
                         title = "Total Income",
                         amount = totalIncome,
                         icon = Icons.Default.TrendingUp,
-                        color = Color(0xFF4CAF50),
+                        color = SuccessGreen,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -110,7 +111,7 @@ fun HomeScreen(
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                        containerColor = PrimaryVariant40.copy(alpha = 0.1f)
                     )
                 ) {
                     Column(

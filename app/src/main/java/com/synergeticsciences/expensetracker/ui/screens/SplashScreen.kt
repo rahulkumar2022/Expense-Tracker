@@ -40,19 +40,20 @@ fun SplashScreen(
         onNavigateToHome()
     }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color(0xFF009688),
-                        Color(0xFFFFFFFF)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF7C4DFF), // Vibrant Purple
+                            Color(0xFF00BCD4), // Cyan
+                            Color(0xFFFFFFFF)  // White
+                        )
                     )
-                )
-            ),
-        contentAlignment = Alignment.Center
-    ) {
+                ),
+            contentAlignment = Alignment.Center
+        ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
