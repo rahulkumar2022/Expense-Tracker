@@ -305,13 +305,13 @@ fun AddExpenseScreen(
                     onClick = {
                         val amountValue = amount.toDoubleOrNull()
                         if (amountValue != null && amountValue > 0) {
-                    onSaveTransaction(
-                        amountValue,
-                        selectedCategory,
-                        description,
-                        selectedDate,
-                        transactionType
-                    )
+                            onSaveTransaction(
+                                amountValue,
+                                selectedCategory,
+                                description,
+                                selectedDate,
+                                transactionType
+                            )
                             snackbarMessage = "${transactionType.name} added successfully!"
                             showSnackbar = true
                             onNavigateBack()
@@ -331,6 +331,26 @@ fun AddExpenseScreen(
         LaunchedEffect(showSnackbar) {
             kotlinx.coroutines.delay(2000)
             showSnackbar = false
+        }
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = SuccessGreen
+                )
+            ) {
+                Text(
+                    text = snackbarMessage,
+                    modifier = Modifier.padding(16.dp),
+                    color = androidx.compose.ui.graphics.Color.White,
+                    fontWeight = FontWeight.Medium
+                )
+            }
         }
     }
 }

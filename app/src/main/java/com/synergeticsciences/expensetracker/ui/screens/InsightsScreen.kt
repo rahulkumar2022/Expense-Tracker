@@ -21,6 +21,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.synergeticsciences.expensetracker.ui.components.SimpleBarChart
+import com.synergeticsciences.expensetracker.ui.components.SimplePieChart
+import com.synergeticsciences.expensetracker.ui.theme.*
 import java.text.NumberFormat
 import java.util.*
 
@@ -33,12 +36,12 @@ fun InsightsScreen(
     
     // Sample data for insights
     val categoryData = listOf(
-        Triple("Food", 3500.0, Color(0xFFFF7043)),
-        Triple("Transportation", 1200.0, Color(0xFF2196F3)),
-        Triple("Shopping", 2800.0, Color(0xFF9C27B0)),
-        Triple("Rent", 12000.0, Color(0xFF795548)),
-        Triple("Entertainment", 1500.0, Color(0xFFE91E63)),
-        Triple("Other", 800.0, Color(0xFF9E9E9E))
+        Triple("Food", 3500.0, FoodColor),
+        Triple("Transportation", 1200.0, TransportationColor),
+        Triple("Shopping", 2800.0, ShoppingColor),
+        Triple("Rent", 12000.0, RentColor),
+        Triple("Entertainment", 1500.0, EntertainmentColor),
+        Triple("Other", 800.0, OtherColor)
     )
     
     val weeklyData = listOf(
@@ -105,31 +108,11 @@ fun InsightsScreen(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         
-                        // Bar Chart Placeholder
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(200.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = "Bar Chart",
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Medium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Text(
-                                    text = "Weekly spending visualization",
-                                    fontSize = 12.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-                                )
-                            }
-                        }
+                        // Bar Chart
+                        SimpleBarChart(
+                            data = weeklyData,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                         
                         Spacer(modifier = Modifier.height(12.dp))
                         
@@ -161,31 +144,11 @@ fun InsightsScreen(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         
-                        // Pie Chart Placeholder
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(200.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally
-                            ) {
-                                Text(
-                                    text = "Pie Chart",
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Medium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                                Text(
-                                    text = "Category spending distribution",
-                                    fontSize = 12.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-                                )
-                            }
-                        }
+                        // Pie Chart
+                        SimplePieChart(
+                            data = categoryData,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                         
                         Spacer(modifier = Modifier.height(12.dp))
                         
